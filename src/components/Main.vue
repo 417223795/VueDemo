@@ -38,9 +38,11 @@ export default {
       this.loading = true
       this.users = []
       this.errorMsg = ''
+      // query请求，根据查找的name进行查找
       axios.get(`http://api.github.com/search/users?q=${searchName}`)
         .then(response => {
           const result = response.data
+          // 注意这里不能使用filter，因为这里需要的不仅仅是筛选，名称改变了，所以需要进行的是遍历
           const users = result.items.map(item => ({
             url: item.html_url,
             avatar_url: item.avatar_url,
@@ -52,6 +54,7 @@ export default {
         .catch(error => {
           this.loading = false
           this.errorMsg = '请求失败！'
+          // 因为不适用error会报错，所以这里打印一下
           console.log(error)
         })
     })
