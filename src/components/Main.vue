@@ -1,5 +1,5 @@
 <template>
-  <!--注意这里必须包裹一个div，因为template标签里面只能有一个根元素-->
+  <!--注意这里必须包裹一个div，因为template标签里面只能有一个根元素 -->
   <div>
     <h2 v-if="firstView">请输入关键字进行搜索</h2>
     <h2 v-if="loading">正在请求中...</h2>
